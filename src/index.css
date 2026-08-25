@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Expanded:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+@import 'tailwindcss';
+
+@theme {
+  /* -- color tokens -- */
+  --color-void: #0a0c12;
+  --color-slab: #141824;
+  --color-rule: #232a3a;
+  --color-porcelain: #e8eaf2;
+  --color-ash: #8a93a8;
+  --color-sodium: #ffb020;
+  --color-iris: #7a6cf0;
+  --color-jade: #3fbf8f;
+  --color-flare: #ff5a4e;
+
+  --color-waiting-bg: #1a1520;
+  --color-selected-bg: #161a2c;
+
+  /* -- type -- */
+  --font-signage: 'Archivo Expanded', 'GT America Extended', sans-serif;
+  --font-body: 'IBM Plex Sans', 'Söhne Buch', sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Berkeley Mono', ui-monospace, monospace;
+
+  /* -- radius -- */
+  --radius-sm: 2px;
+
+  --animate-tick: tick 250ms linear;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--color-void);
+  color: var(--color-porcelain);
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 20px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+::selection {
+  background: var(--color-iris);
+  color: var(--color-void);
+}
+
+/* tabular numerals everywhere numbers appear */
+.mono,
+.tnum {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.signage {
+  font-family: var(--font-signage);
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+/* thin scrollbars, chrome never draws attention */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-rule) transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--color-rule);
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+button {
+  font-family: inherit;
+  color: inherit;
+}
+
+button:focus-visible,
+[tabindex]:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--color-sodium);
+  outline-offset: 2px;
+}
+
+@keyframes tick {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-2px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
