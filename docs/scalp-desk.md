@@ -10,10 +10,16 @@ that can place an order.
 
 ## Running it
 
+To deploy on your own machine, follow [the local runbook](deploy-local.md) —
+it has preflight checks for the things that silently produce an empty
+dashboard (region blocking, blocked WebSockets, clock drift).
+
 ```bash
 npm install
 
-npm run dev                 # UI at http://localhost:5173/#/signals
+npm run signals:doctor      # preflight: connectivity, region, clock, symbols
+npm start                   # build + serve at http://localhost:4173/#/signals
+npm run dev                 # or: dev server at http://localhost:5173/#/signals
 npm run signals:live        # the same engine, printing to a terminal
 npm run signals:backtest -- --symbols SOLUSDT,DOGEUSDT --days 14
 npm test                    # offline wiring + invariant checks

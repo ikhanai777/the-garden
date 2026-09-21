@@ -6,6 +6,10 @@ Two surfaces share this app:
 - **`#/signals`** — [Scalp Desk](docs/scalp-desk.md), a Binance USDⓈ-M futures
   signal engine for 1–10 minute trades, running on live public market data.
   Also available headless: `npm run signals:live`, `npm run signals:backtest`.
+  To run it on your own machine, follow
+  [the local deployment runbook](docs/deploy-local.md) — start with
+  `npm run signals:doctor`, which checks connectivity, region blocking and
+  clock accuracy before anything else.
 
 ---
 

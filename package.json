@@ -6,9 +6,11 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "oxlint",
+    "start": "npm run build && vite preview --port 4173 --strictPort",
     "preview": "vite preview",
+    "lint": "oxlint",
     "test": "node scripts/selftest.ts",
+    "signals:doctor": "node scripts/doctor.ts",
     "signals:live": "node scripts/live.ts",
     "signals:backtest": "node scripts/backtest.ts"
   },
@@ -30,5 +32,8 @@
     "tailwindcss": "^4.3.3",
     "typescript": "~6.0.2",
     "vite": "^8.2.2"
+  },
+  "engines": {
+    "node": ">=22.18"
   }
 }
