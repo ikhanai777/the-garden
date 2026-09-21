@@ -3,9 +3,10 @@ import { ContextDock } from './components/ContextDock'
 import { FleetRail } from './components/FleetRail'
 import { FocusStage } from './components/FocusStage'
 import { HaltAllModal } from './components/HaltAllModal'
+import { SignalsTerminal } from './components/signals/SignalsTerminal'
 import { StatusBar } from './components/StatusBar'
 import { Tide } from './components/Tide'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { AppStateProvider, useAppState } from './hooks/useAppState'
 import { useKeyboardShortcuts } from './hooks/useKeyboardShortcuts'
 import { useWindowWidth } from './hooks/useWindowWidth'
@@ -54,7 +55,29 @@ function Shell() {
   )
 }
 
+/**
+ * Two surfaces share this app: the agent supervision console at `#/`, and the
+ * Binance futures scalp desk at `#/signals`. A hash route keeps them fully
+ * independent — the signals engine holds a live socket, so it must unmount
+ * cleanly rather than run behind the dashboard.
+ */
+function useHashRoute(): string {
+  const [hash, setHash] = useState(() => window.location.hash)
+  useEffect(() => {
+    const onChange = () => setHash(window.location.hash)
+    window.addEventListener('hashchange', onChange)
+    return () => window.removeEventListener('hashchange', onChange)
+  }, [])
+  return hash
+}
+
 function App() {
+  const hash = useHashRoute()
+
+  if (hash.startsWith('#/signals')) {
+    return <SignalsTerminal onExit={() => { window.location.hash = '#/' }} />
+  }
+
   return (
     <AppStateProvider>
       <Shell />

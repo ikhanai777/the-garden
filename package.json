@@ -7,7 +7,10 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "node scripts/selftest.ts",
+    "signals:live": "node scripts/live.ts",
+    "signals:backtest": "node scripts/backtest.ts"
   },
   "dependencies": {
     "framer-motion": "^13.1.1",

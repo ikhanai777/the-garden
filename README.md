@@ -1,4 +1,15 @@
-# Agentic OS — Dashboard
+# the-garden
+
+Two surfaces share this app:
+
+- **`#/`** — Agentic OS, a supervision console for autonomous agents.
+- **`#/signals`** — [Scalp Desk](docs/scalp-desk.md), a Binance USDⓈ-M futures
+  signal engine for 1–10 minute trades, running on live public market data.
+  Also available headless: `npm run signals:live`, `npm run signals:backtest`.
+
+---
+
+## Agentic OS — Dashboard
 
 A supervision console for an OS where autonomous agents run continuously — spawning subtasks, calling tools, spending budget, touching a filesystem, and asking for permission. Built from the design spec in `design/` (see the UI spec shared for this project): the operator's job is to see what every agent is doing right now, and intervene within two seconds.
 
@@ -22,6 +33,13 @@ npm run dev
 
 ```bash
 npm run build
+```
+
+## Test
+
+```bash
+npm test          # signal-engine invariants, indicators, look-ahead check
+npm run lint
 ```
 
 ## Key interactions

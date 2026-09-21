@@ -71,6 +71,14 @@ export function StatusBar() {
           </span>
         )}
         <span className="mono hidden shrink-0 text-[13px] text-ash tnum md:inline">{runningCount} running</span>
+        <a
+          href="#/signals"
+          className="signage shrink-0 px-2 py-1 text-ash transition-colors hover:text-porcelain"
+          style={{ border: '1px solid var(--color-rule)', borderRadius: 'var(--radius-sm)' }}
+          title="Binance futures scalp desk"
+        >
+          scalp desk
+        </a>
         <button
           onClick={toggleDensity}
           className="signage hidden shrink-0 px-2 py-1 text-ash transition-colors hover:text-porcelain lg:block"
